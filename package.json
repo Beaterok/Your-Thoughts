@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server",
+    "start": "node server.js",
     "dev": "nodemon index",
     "seed": "node utils/seed",
     "heroku-postbuild": "node utils/seed.js"
