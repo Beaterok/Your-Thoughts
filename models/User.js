@@ -36,11 +36,10 @@ const userSchema = new Schema(
         getters: true,
         virtuals: true,
       },
-      id: false,
     }
   );
-  
-  postSchema.virtual('friendCount').get(function () {
+
+  userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
   });
 
