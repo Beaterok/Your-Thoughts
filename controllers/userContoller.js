@@ -73,5 +73,15 @@ deleteFriend({params},res) {
     : res.json(user)
     )
     .catch((err) => res.status(500).json(err));
-}
+},
+deleteUser(req, res) {
+  User.findOneAndDelete({ _id: req.params.userId })
+    .then((user) =>
+      !user
+        ? res.status(404).json({ message: 'No user with that ID' })
+        : res.json(user)
+    )
+    .then(() => res.json({ message: 'user deleted!' }))
+    .catch((err) => res.status(500).json(err));
+},
 };
