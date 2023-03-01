@@ -1,5 +1,4 @@
 const { Schema, Types, model } = require('mongoose');
-const validatorPackage = require('validator');
 
 const userSchema = new Schema(
     {
@@ -13,10 +12,10 @@ const userSchema = new Schema(
         type: String,
         required: true,
         unique: true,
-        validate: {
-            validator: validatorPackage.isEmail,
-            message: 'Please provide a valid email',
-          },
+        match: [ //regex to validate email is an email within site parameters
+        /^([\w]+)@([\w]+)\.([a-zA-Z]{2,9})$/,
+        'Email does not meet our requirements.',
+      ],
       },
       thoughts: [
         {
